@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chit Chat - Your Global Messenger</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Socket.IO Client CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.7.5/dist/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chit Chat</h1>
+        </header>
+
+        <!-- Auth Section -->
+        <section id="auth-section" class="auth-section">
+            <div class="auth-form-container">
+                <div class="auth-tabs">
+                    <button id="show-login" class="active">Login</button>
+                    <button id="show-signup">Sign Up</button>
+                </div>
+
+                <form id="login-form" class="auth-form active">
+                    <h2>Login</h2>
+                    <div class="form-group">
+                        <label for="login-username-email">Username or Email:</label>
+                        <input type="text" id="login-username-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password:</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                    <p id="login-message" class="message"></p>
+                </form>
+
+                <form id="signup-form" class="auth-form">
+                    <h2>Sign Up</h2>
+                    <div class="form-group">
+                        <label for="signup-fullname">Full Name:</label>
+                        <input type="text" id="signup-fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-username">Username:</label>
+                        <input type="text" id="signup-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email:</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-phone">Phone Number:</label>
+                        <input type="tel" id="signup-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-country">Country:</label>
+                        <input type="text" id="signup-country" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password:</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                    <p id="signup-message" class="message"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Main Chat Section -->
+        <section id="chat-section" class="chat-section hidden">
+            <div class="sidebar">
+                <div class="user-profile">
+                    <span id="current-username"></span> (<span id="current-userid"></span>)
+                    <button id="logout-btn">Logout</button>
+                </div>
+                <div class="add-friend-section">
+                    <h3>Add Friends</h3>
+                    <input type="text" id="friend-search-input" placeholder="Search by User ID (e.g., CHIT1001)">
+                    <button id="search-friend-btn">Search</button>
+                    <div id="search-results"></div>
+                </div>
+                <h3>Friends</h3>
+                <ul id="friends-list">
+                    <!-- Friends will be dynamically loaded here -->
+                </ul>
+            </div>
+            <div class="chat-area">
+                <div class="chat-header">
+                    <h2 id="chat-partner-name">Select a friend to chat</h2>
+                    <span id="typing-indicator" class="typing-indicator hidden">Typing...</span>
+                </div>
+                <div class="messages-container" id="messages-container">
+                    <!-- Messages will be dynamically loaded here -->
+                </div>
+                <div class="message-input-area">
+                    <input type="text" id="message-input" placeholder="Type a message...">
+                    <button id="send-message-btn">Send</button>
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                    <button id="upload-image-btn" title="Upload Image">🖼️</button>
+                    <button id="record-voice-btn" title="Record Voice">🎤</button>
+                    <button id="send-gif-btn" title="Send GIF">GIF</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
